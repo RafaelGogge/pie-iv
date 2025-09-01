@@ -1,0 +1,24 @@
+# Node
+node_modules/
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+/dist/
+/build/
+
+# Env
+.env
+.env.*
+
+# Others
+*.bak
+*.tmp
