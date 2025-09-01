@@ -74,4 +74,5 @@ Esta tela faz parte do sistema UniLab, voltado para o gerenciamento de laborató
 
 ---
 
-Este projeto é um exemplo de como unir design moderno, interatividade e boas práticas de desenvolvimento para criar uma experiência completa e agradável para o usuário universitário.
+Este projeto é a continuação do desenvolvimento do Unilab, parte do projeto: criação da tela de perfil do usuário (modelo de teste, ainda em desenvolvimento).
+
