@@ -69,6 +69,15 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+        // Antes de salvar, verifica alterações
+        const prevData = {
+            name: document.getElementById('userName').defaultValue,
+            email: document.getElementById('userEmail').defaultValue,
+            matricula: document.getElementById('userMatricula').defaultValue,
+            departamento: document.getElementById('userDepartamento').defaultValue,
+            status: document.getElementById('userStatus').defaultValue
+        };
+
         const formData = {
             name: document.getElementById('userName').value,
             email: document.getElementById('userEmail').value,
@@ -76,6 +85,13 @@ document.addEventListener('DOMContentLoaded', function () {
             departamento: document.getElementById('userDepartamento').value,
             status: document.getElementById('userStatus').value
         };
+
+        // Detecta e registra alterações
+        Object.keys(formData).forEach(key => {
+            if (formData[key] !== prevData[key]) {
+                addToHistory('Alteração de perfil', `Campo "${key}" alterado de "${prevData[key]}" para "${formData[key]}"`);
+            }
+        });
 
         // Aqui você faria uma chamada à API para salvar os dados
         console.log('Dados a serem salvos:', formData);
@@ -90,6 +106,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 field.classList.remove('is-valid');
             }, 3000);
         });
+
+        // Atualiza valores default para próxima comparação
+        document.getElementById('userName').defaultValue = formData.name;
+        document.getElementById('userEmail').defaultValue = formData.email;
+        document.getElementById('userMatricula').defaultValue = formData.matricula;
+        document.getElementById('userDepartamento').defaultValue = formData.departamento;
+        document.getElementById('userStatus').defaultValue = formData.status;
+
+        renderHistory();
     }
 
     // Função para selecionar um avatar com preview instantâneo
@@ -115,18 +140,14 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Efeito sonoro não suportado');
         }
 
-        // Anima o preview
-        let previewId = '';
-        if (tabId === 'computacao') {
-            previewId = 'previewAvatar';
-        } else if (tabId === 'biologia') {
-            previewId = 'previewAvatarBio';
-        } else if (tabId === 'fisica') {
-            previewId = 'previewAvatarFis';
-        } else if (tabId === 'quimica') {
-            previewId = 'previewAvatarQuim';
-        }
-        const previewImg = document.getElementById(previewId);
+        // Refatoração: previewId dinâmico
+        const previewIdMap = {
+            computacao: 'previewAvatar',
+            biologia: 'previewAvatarBio',
+            fisica: 'previewAvatarFis',
+            quimica: 'previewAvatarQuim'
+        };
+        const previewImg = document.getElementById(previewIdMap[tabId] || '');
 
         if (previewImg) {
             // Efeito de fade out
@@ -165,6 +186,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Aqui você faria uma chamada à API para salvar o avatar
             showNotification('Avatar atualizado com sucesso!', 'success');
+
+            addToHistory('Alteração de avatar', `Avatar alterado para "${selectedAvatar.split('/').pop()}"`);
+            renderHistory();
 
             // Fecha o modal
             bootstrap.Modal.getInstance(avatarModal).hide();
@@ -223,12 +247,27 @@ document.addEventListener('DOMContentLoaded', function () {
         showNotification('Formulário resetado!', 'info');
     };
 
+
     // Event Listeners
     profileForm.addEventListener('submit', saveProfileData);
     saveAvatarBtn.addEventListener('click', saveSelectedAvatar);
     avatarItems.forEach(item => {
         item.addEventListener('click', selectAvatar);
     });
+
+    // Funcionalidade do botão de sair
+    const logoutButton = document.querySelector('.logout-button');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            // Limpa dados do localStorage relacionados ao usuário
+            localStorage.removeItem('selectedAvatar');
+            localStorage.removeItem('darkMode');
+            // Adicione aqui outros dados que desejar limpar
+            // Redireciona para a tela de login (ajuste o caminho se necessário)
+            window.location.href = 'index.html';
+        });
+    }
 
     // Reset da seleção quando o modal é fechado
     avatarModal.addEventListener('hidden.bs.modal', function () {
@@ -455,4 +494,36 @@ function showThankYouMessage() {
     }, 5000);
 }
 
-// ...existing code...
+// Função para registrar alterações no histórico
+function addToHistory(action, details) {
+    const history = JSON.parse(localStorage.getItem('profileHistory')) || [];
+    history.unshift({
+        action,
+        details,
+        date: new Date().toLocaleString('pt-BR')
+    });
+    // Mantém apenas os 20 registros mais recentes
+    localStorage.setItem('profileHistory', JSON.stringify(history.slice(0, 20)));
+}
+
+// Função para exibir o histórico na interface
+function renderHistory() {
+    const historyList = document.getElementById('historyList');
+    if (!historyList) return;
+    const history = JSON.parse(localStorage.getItem('profileHistory')) || [];
+    historyList.innerHTML = history.length === 0
+        ? '<li class="list-group-item">Nenhuma atividade registrada.</li>'
+        : history.map(item => `
+            <li class="list-group-item">
+                <strong>${item.action}</strong> - ${item.details}
+                <br><small class="text-muted">${item.date}</small>
+            </li>
+        `).join('');
+}
+
+// Ao carregar a página, renderiza o histórico
+document.addEventListener('DOMContentLoaded', function () {
+    // ...existing code...
+    renderHistory();
+    // ...existing code...
+});
