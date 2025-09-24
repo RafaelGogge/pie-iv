@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UniLab - Dashboard de Perfis">
+    <meta name="author" content="Rafael V. Gogge">
+    <title>UniLab - Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="opacity-0 transition-opacity duration-1000">
+    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
+    <!-- Navbar -->
+    <header class="navbar navbar-expand-lg navbar-dark fixed-top transition-all duration-300" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="perfil-dashboard.html">
+                <img src="assets/images/LogoUnilab.png" alt="UniLab Logo" height="40" width="auto">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="sejaBemVindo.html">
+                            <i class="bi bi-house-door me-1"></i>Início
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="perfil-dashboard.html">
+                            <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/perfil-cadastro.html">
+                            <i class="bi bi-person-plus me-1"></i>Cadastrar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/perfil-lista.html">
+                            <i class="bi bi-people me-1"></i>Perfis
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agendamento_lab.html">
+                            <i class="bi bi-calendar-plus me-1"></i>Agendar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="historicoAgendamentos.html">
+                            <i class="bi bi-clock-history me-1"></i>Histórico
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <div class="notification-bell me-3">
+                        <i class="bi bi-bell-fill fs-5 text-white"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
+                            role="button" data-bs-toggle="dropdown">
+                            <div class="avatar-circle me-2">
+                                <img src="assets/avatares/computacao/computacao-1.png" alt="Avatar" id="headerAvatarImg"
+                                    class="avatar-img">
+                            </div>
+                            <span class="user-name">Usuário</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item active" href="perfil-dashboard.html"><i
+                                        class="bi bi-speedometer2"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="pages/perfil-cadastro.html"><i
+                                        class="bi bi-person-plus"></i>Cadastrar Perfil</a></li>
+                            <li><a class="dropdown-item" href="pages/perfil-lista.html"><i class="bi bi-people"></i>Meus
+                                    Perfis</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item logout-button" href="#"><i
+                                        class="bi bi-box-arrow-right"></i>Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main id="main-content" class="container py-4">
+        <!-- Cabeçalho do Dashboard -->
+        <div class="welcome-section mb-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="typing-text text-dark"><i class="bi bi-speedometer2 me-2"></i>Dashboard de Perfis</h1>
+                    <p class="lead text-dark">Visão geral do sistema de gerenciamento de perfis</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="pages/perfil-cadastro.html" class="btn btn-primary">
+                        <i class="bi bi-person-plus me-2"></i>Novo Perfil
+                    </a>
+                    <a href="pages/perfil-lista.html" class="btn btn-outline-light">
+                        <i class="bi bi-people me-2"></i>Ver Todos
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estatísticas Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon bg-primary">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h4 id="totalPerfis">0</h4>
+                        <p>Total de Perfis</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon bg-success">
+                        <i class="bi bi-person-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h4 id="perfisAtivos">0</h4>
+                        <p>Perfis Ativos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon bg-warning">
+                        <i class="bi bi-building"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h4 id="totalDepartamentos">0</h4>
+                        <p>Departamentos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon bg-info">
+                        <i class="bi bi-calendar-plus"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h4 id="cadastrosRecentes">0</h4>
+                        <p>Cadastros Hoje</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ações Rápidas -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="bi bi-lightning me-2"></i>Ações Rápidas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <a href="pages/perfil-cadastro.html" class="action-card">
+                                    <div class="action-icon bg-primary">
+                                        <i class="bi bi-person-plus"></i>
+                                    </div>
+                                    <h6>Cadastrar Perfil</h6>
+                                    <p>Adicionar novo perfil ao sistema</p>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="pages/perfil-lista.html" class="action-card">
+                                    <div class="action-icon bg-success">
+                                        <i class="bi bi-list-ul"></i>
+                                    </div>
+                                    <h6>Gerenciar Perfis</h6>
+                                    <p>Visualizar e editar perfis existentes</p>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="action-card" onclick="exportUserData()">
+                                    <div class="action-icon bg-warning">
+                                        <i class="bi bi-download"></i>
+                                    </div>
+                                    <h6>Exportar Dados</h6>
+                                    <p>Baixar dados em formato JSON</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="action-card" onclick="showImportModal()">
+                                    <div class="action-icon bg-info">
+                                        <i class="bi bi-upload"></i>
+                                    </div>
+                                    <h6>Importar Dados</h6>
+                                    <p>Carregar dados de arquivo JSON</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Perfis Recentes -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>Perfis Cadastrados Recentemente</h5>
+                        <a href="pages/perfil-lista.html" class="btn btn-sm btn-outline-primary">Ver Todos</a>
+                    </div>
+                    <div class="card-body">
+                        <div id="perfisRecentes">
+                            <!-- Lista será populada dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resumo por Departamento -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-pie-chart me-2"></i>Distribuição por Departamento</h5>
+                        <span class="text-muted small">Visualização Gráfica</span>
+                    </div>
+                    <div class="card-body row">
+                        <div class="col-md-7 mb-3 mb-md-0">
+                            <div id="departamentoStats">
+                                <!-- Estatísticas por departamento -->
+                            </div>
+                        </div>
+                        <div class="col-md-5 d-flex align-items-center justify-content-center">
+                            <canvas id="departamentoChart" width="220" height="220"
+                                aria-label="Gráfico de pizza de departamentos" role="img"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module">
+        // Script específico do dashboard
+        import { ProfileManager } from './js/modules/profileManager.js';
+        import { FormatUtils } from './js/utils/helpers.js';
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const profileManager = new ProfileManager();
+            updateDashboardStats(profileManager);
+        });
+
+        function updateDashboardStats(profileManager) {
+            const profiles = profileManager.getAllProfiles();
+
+            // Estatísticas gerais
+            document.getElementById('totalPerfis').textContent = profiles.length;
+            document.getElementById('perfisAtivos').textContent = profiles.filter(p => p.status === 'ativo').length;
+
+            // Departamentos únicos
+            const departamentos = [...new Set(profiles.map(p => p.departamento))];
+            document.getElementById('totalDepartamentos').textContent = departamentos.length;
+
+            // Cadastros de hoje
+            const hoje = new Date().toDateString();
+            const cadastrosHoje = profiles.filter(p => new Date(p.dataCreation).toDateString() === hoje);
+            document.getElementById('cadastrosRecentes').textContent = cadastrosHoje.length;
+
+            // Perfis recentes
+            updateRecentProfiles(profiles);
+
+            // Estatísticas por departamento
+            updateDepartmentStats(profiles, departamentos);
+        }
+
+        function updateRecentProfiles(profiles) {
+            const recent = profiles.slice(-5).reverse();
+            const container = document.getElementById('perfisRecentes');
+
+            if (recent.length === 0) {
+                container.innerHTML = '<p class="text-muted">Nenhum perfil cadastrado ainda.</p>';
+                return;
+            }
+
+            container.innerHTML = recent.map(profile => `
+                <div class="d-flex align-items-center mb-2 p-2 border rounded">
+                    <div class="avatar-circle me-3">
+                        <img src="${profile.avatar}" alt="Avatar" class="avatar-img">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h6 class="mb-1">${profile.name}</h6>
+                        <small class="text-muted">${FormatUtils.getDepartmentName(profile.departamento)} • ${profile.dataCreation}</small>
+                    </div>
+                    <span class="badge bg-${profile.status === 'ativo' ? 'success' : 'secondary'}">${profile.status}</span>
+                </div>
+            `).join('');
+        }
+
+        function updateDepartmentStats(profiles, departamentos) {
+            const container = document.getElementById('departamentoStats');
+
+            if (departamentos.length === 0) {
+                container.innerHTML = '<p class="text-muted">Nenhum departamento cadastrado ainda.</p>';
+                if (window.departamentoChartInstance) {
+                    window.departamentoChartInstance.destroy();
+                }
+                return;
+            }
+
+            const stats = departamentos.map(dept => {
+                const count = profiles.filter(p => p.departamento === dept).length;
+                const percentage = profiles.length > 0 ? (count / profiles.length * 100).toFixed(1) : 0;
+                return {
+                    name: FormatUtils.getDepartmentName(dept),
+                    count: count,
+                    percentage: percentage
+                };
+            });
+
+            container.innerHTML = stats.map(stat => `
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span>${stat.name}</span>
+                        <span class="badge bg-primary">${stat.count}</span>
+                    </div>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar" role="progressbar" style="width: ${stat.percentage}%"></div>
+                    </div>
+                    <small class="text-muted">${stat.percentage}% do total</small>
+                </div>
+            `).join('');
+
+            // Gráfico de pizza com Chart.js
+            const ctx = document.getElementById('departamentoChart').getContext('2d');
+            const data = {
+                labels: stats.map(s => s.name),
+                datasets: [{
+                    data: stats.map(s => s.count),
+                    backgroundColor: [
+                        '#0d6efd', '#198754', '#ffc107', '#0dcaf0', '#6f42c1', '#fd7e14', '#dc3545', '#20c997', '#6610f2', '#adb5bd'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+            if (window.departamentoChartInstance) {
+                window.departamentoChartInstance.destroy();
+            }
+            window.departamentoChartInstance = new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: {
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const percent = stats[context.dataIndex]?.percentage || 0;
+                                    return `${label}: ${value} (${percent}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

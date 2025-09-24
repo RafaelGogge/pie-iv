@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UniLab - Cadastro de Novo Perfil">
+    <meta name="author" content="Rafael V. Gogge">
+    <title>UniLab - Cadastrar Perfil</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body class="opacity-0 transition-opacity duration-1000">
+    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
+    <!-- Navbar -->
+    <header class="navbar navbar-expand-lg navbar-dark fixed-top transition-all duration-300" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="../perfil-dashboard.html">
+                <img src="../assets/images/LogoUnilab.png" alt="UniLab Logo" height="40" width="auto">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../sejaBemVindo.html">
+                            <i class="bi bi-house-door me-1"></i>Início
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../perfil-dashboard.html">
+                            <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="perfil-cadastro.html">
+                            <i class="bi bi-person-plus me-1"></i>Cadastrar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="perfil-lista.html">
+                            <i class="bi bi-people me-1"></i>Perfis
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../agendamento_lab.html">
+                            <i class="bi bi-calendar-plus me-1"></i>Agendar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../historicoAgendamentos.html">
+                            <i class="bi bi-clock-history me-1"></i>Histórico
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <div class="notification-bell me-3">
+                        <i class="bi bi-bell-fill fs-5 text-white"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
+                            role="button" data-bs-toggle="dropdown">
+                            <div class="avatar-circle me-2">
+                                <img src="../assets/avatares/computacao/computacao-1.png" alt="Avatar"
+                                    id="headerAvatarImg" class="avatar-img">
+                            </div>
+                            <span class="user-name">Usuário</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="../perfil-dashboard.html"><i
+                                        class="bi bi-speedometer2"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item active" href="perfil-cadastro.html"><i
+                                        class="bi bi-person-plus"></i>Cadastrar Perfil</a></li>
+                            <li><a class="dropdown-item" href="perfil-lista.html"><i class="bi bi-people"></i>Meus
+                                    Perfis</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item logout-button" href="#"><i
+                                        class="bi bi-box-arrow-right"></i>Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main id="main-content" class="container py-4">
+        <!-- Cabeçalho -->
+        <div class="welcome-section mb-4">
+            <div class="d-flex align-items-center mb-3">
+                <a href="../perfil-dashboard.html" class="btn btn-outline-light me-3">
+                    <i class="bi bi-arrow-left me-1"></i>Voltar
+                </a>
+                <div>
+                    <h1 class="typing-text mb-1"><i class="bi bi-person-plus me-2"></i>Cadastrar Novo Perfil</h1>
+                    <p class="lead mb-0">Preencha os dados abaixo para criar um novo perfil no sistema</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulário de Cadastro -->
+        <div class="row justify-content-center">
+            <div class="col-xl-10">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <form id="profileForm" novalidate>
+                            <!-- Seção Avatar -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="form-section-title"><i class="bi bi-image me-2"></i>Selecionar Avatar
+                                    </h5>
+                                    <div class="avatar-preview-container text-center mb-3">
+                                        <div class="avatar-preview-large">
+                                            <img src="../assets/avatares/computacao/computacao-1.png"
+                                                alt="Avatar Preview" id="avatarPreview">
+                                            <input type="hidden" id="avatar" name="avatar"
+                                                value="../assets/avatares/computacao/computacao-1.png">
+                                        </div>
+                                        <p class="mt-2 text-muted">Preview do avatar selecionado</p>
+                                    </div>
+
+                                    <div class="avatar-selection-mini">
+                                        <h6 class="mb-2">Escolha seu avatar:</h6>
+                                        <div class="avatar-categories">
+                                            <div class="category-buttons mb-3">
+                                                <button type="button"
+                                                    class="btn btn-outline-primary btn-sm category-btn active"
+                                                    data-category="computacao">
+                                                    <i class="bi bi-pc-display me-1"></i>Computação
+                                                </button>
+                                                <button type="button"
+                                                    class="btn btn-outline-primary btn-sm category-btn"
+                                                    data-category="biologia">
+                                                    <i class="bi bi-flower1 me-1"></i>Biologia
+                                                </button>
+                                                <button type="button"
+                                                    class="btn btn-outline-primary btn-sm category-btn"
+                                                    data-category="fisica">
+                                                    <i class="bi bi-lightning me-1"></i>Física
+                                                </button>
+                                                <button type="button"
+                                                    class="btn btn-outline-primary btn-sm category-btn"
+                                                    data-category="quimica">
+                                                    <i class="bi bi-flask me-1"></i>Química
+                                                </button>
+                                            </div>
+
+                                            <div class="avatar-grid" id="avatarGrid">
+                                                <!-- Avatares serão carregados dinamicamente -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Seção Dados Pessoais -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="form-section-title"><i class="bi bi-person me-2"></i>Dados Pessoais</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Nome Completo *</label>
+                                    <input type="text" class="form-control" id="name" required
+                                        placeholder="Digite o nome completo">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="matricula" class="form-label">Matrícula *</label>
+                                    <input type="text" class="form-control" id="matricula" required
+                                        placeholder="Ex: 20241234567" maxlength="11">
+                                    <div class="invalid-feedback"></div>
+                                    <div class="form-text">Matrícula deve ter 11 dígitos</div>
+                                </div>
+                            </div>
+
+                            <!-- Seção Contato -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="form-section-title"><i class="bi bi-envelope me-2"></i>Informações de
+                                        Contato</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">E-mail *</label>
+                                    <input type="email" class="form-control" id="email" required
+                                        placeholder="exemplo@email.com">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telefone" class="form-label">Telefone</label>
+                                    <input type="tel" class="form-control" id="telefone" placeholder="(00) 00000-0000">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+
+                            <!-- Seção Acadêmica -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="form-section-title"><i class="bi bi-building me-2"></i>Informações
+                                        Acadêmicas</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="departamento" class="form-label">Departamento *</label>
+                                    <select class="form-select" id="departamento" required>
+                                        <option value="">Selecione o departamento</option>
+                                        <option value="computacao">Ciência da Computação</option>
+                                        <option value="biologia">Biologia</option>
+                                        <option value="fisica">Física</option>
+                                        <option value="quimica">Química</option>
+                                        <option value="matematica">Matemática</option>
+                                        <option value="administracao">Administração</option>
+                                    </select>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="curso" class="form-label">Curso *</label>
+                                    <input type="text" class="form-control" id="curso" required
+                                        placeholder="Ex: Bacharelado em Ciência da Computação">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="tipoUsuario" class="form-label">Tipo de Usuário *</label>
+                                    <select class="form-select" id="tipoUsuario" required>
+                                        <option value="">Selecione o tipo</option>
+                                        <option value="estudante">Estudante</option>
+                                        <option value="professor">Professor</option>
+                                        <option value="funcionario">Funcionário</option>
+                                        <option value="pesquisador">Pesquisador</option>
+                                    </select>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="status" class="form-label">Status *</label>
+                                    <select class="form-select" id="status" required>
+                                        <option value="">Selecione o status</option>
+                                        <option value="ativo" selected>Ativo</option>
+                                        <option value="inativo">Inativo</option>
+                                        <option value="pendente">Pendente</option>
+                                    </select>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+
+                            <!-- Seção Observações -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="form-section-title"><i class="bi bi-chat-text me-2"></i>Informações
+                                        Adicionais</h5>
+                                </div>
+                                <div class="col-12">
+                                    <label for="observacoes" class="form-label">Observações</label>
+                                    <textarea class="form-control" id="observacoes" rows="3"
+                                        placeholder="Informações adicionais sobre o perfil (opcional)"></textarea>
+                                    <div class="form-text">Campo opcional para observações gerais</div>
+                                </div>
+                            </div>
+
+                            <!-- Botões de Ação -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-actions">
+                                        <button type="button" class="btn btn-outline-secondary me-2"
+                                            onclick="clearForm()">
+                                            <i class="bi bi-arrow-clockwise me-1"></i>Limpar
+                                        </button>
+                                        <button type="submit" class="btn btn-primary me-2" id="submitBtn">
+                                            <i class="bi bi-check-circle me-1"></i>Cadastrar Perfil
+                                        </button>
+                                        <a href="perfil-lista.html" class="btn btn-outline-primary">
+                                            <i class="bi bi-people me-1"></i>Ver Perfis
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Instruções de Preenchimento -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h6 class="mb-0"><i class="bi bi-info-circle me-2"></i>Instruções de Preenchimento</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled small">
+                                    <li><i class="bi bi-check text-success me-2"></i>Campos marcados com * são
+                                        obrigatórios</li>
+                                    <li><i class="bi bi-check text-success me-2"></i>A matrícula deve ter exatamente 11
+                                        dígitos</li>
+                                    <li><i class="bi bi-check text-success me-2"></i>O e-mail deve ser único no sistema
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled small">
+                                    <li><i class="bi bi-check text-success me-2"></i>Escolha um avatar representativo
+                                    </li>
+                                    <li><i class="bi bi-check text-success me-2"></i>Telefone é opcional mas recomendado
+                                    </li>
+                                    <li><i class="bi bi-check text-success me-2"></i>Status padrão é "Ativo"</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../js/main.js"></script>
+    <script type="module">
+        // Script específico da página de cadastro
+        import { ProfileManager } from '../js/modules/profileManager.js';
+        import { AvatarManager } from '../js/modules/avatarManager.js';
+        import { NotificationSystem } from '../js/modules/notificationSystem.js';
+
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOM carregado, inicializando componentes...');
+
+            const profileManager = new ProfileManager();
+            const avatarManager = new AvatarManager();
+            const notificationSystem = new NotificationSystem();
+
+            // Inicializar avatares com logs de debug
+            console.log('Tentando inicializar avatares...');
+
+            // Verifica se o container existe
+            const avatarGrid = document.getElementById('avatarGrid');
+            if (avatarGrid) {
+                console.log('Container avatarGrid encontrado');
+                avatarManager.initializeAvatars();
+                avatarManager.initializeAvatarsCompat(); // Método de fallback
+            } else {
+                console.error('Container avatarGrid NÃO encontrado');
+            }
+
+            // Configurar formulário
+            setupFormHandlers(profileManager, notificationSystem);
+
+            // Teste manual para verificar se os avatares carregam
+            setTimeout(() => {
+                const avatarGrid = document.getElementById('avatarGrid');
+                if (avatarGrid) {
+                    console.log('Conteúdo do avatarGrid:', avatarGrid.innerHTML);
+                    console.log('Número de elementos no grid:', avatarGrid.children.length);
+
+                    // Teste manual - adicionar um avatar diretamente
+                    if (avatarGrid.children.length === 0) {
+                        console.log('Grid vazio, adicionando avatar de teste...');
+                        const testAvatar = document.createElement('div');
+                        testAvatar.className = 'avatar-option';
+                        testAvatar.innerHTML = `
+                            <img src="../assets/avatares/computacao/computacao-1.png" 
+                                 alt="Teste" 
+                                 class="avatar-img"
+                                 onerror="console.error('Erro ao carregar imagem de teste')"
+                                 onload="console.log('Imagem de teste carregada com sucesso')">
+                        `;
+                        avatarGrid.appendChild(testAvatar);
+                    }
+                } else {
+                    console.error('avatarGrid ainda não encontrado após timeout');
+                }
+            }, 2000);
+        });
+
+        function setupFormHandlers(profileManager, notificationSystem) {
+            const form = document.getElementById('profileForm');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                if (form.checkValidity()) {
+                    const formData = new FormData(form);
+                    const profileData = {
+                        name: document.getElementById('name').value.trim(),
+                        matricula: document.getElementById('matricula').value.trim(),
+                        email: document.getElementById('email').value.trim(),
+                        telefone: document.getElementById('telefone').value.trim(),
+                        departamento: document.getElementById('departamento').value,
+                        curso: document.getElementById('curso').value.trim(),
+                        tipoUsuario: document.getElementById('tipoUsuario').value,
+                        status: document.getElementById('status').value,
+                        observacoes: document.getElementById('observacoes').value.trim(),
+                        avatar: document.getElementById('avatarPreview').src
+                    };
+
+                    const result = profileManager.addProfile(profileData);
+
+                    if (result.success) {
+                        notificationSystem.showSuccess('Perfil cadastrado com sucesso!');
+                        setTimeout(() => {
+                            window.location.href = '../perfil-dashboard.html';
+                        }, 1500);
+                    } else {
+                        notificationSystem.showError(result.message);
+                    }
+                } else {
+                    form.classList.add('was-validated');
+                    notificationSystem.showWarning('Por favor, preencha todos os campos obrigatórios corretamente.');
+                }
+            });
+        }
+
+        function clearForm() {
+            const form = document.getElementById('profileForm');
+            form.reset();
+            form.classList.remove('was-validated');
+
+            // Reset avatar to default
+            document.getElementById('avatarPreview').src = '../assets/avatares/computacao/computacao-1.png';
+
+            // Reset category selection
+            document.querySelector('.category-btn.active').classList.remove('active');
+            document.querySelector('[data-category="computacao"]').classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+/* 
+    UniLab - Sistema de Gerenciamento de Laboratórios
+    Arquivo CSS Principal
+    Autor: Rafael V. Gogge
+    Copyright © 2025 Rafael V. Gogge
+*/
+
+/* =============================
+   IMPORTS - ORDEM IMPORTANTE
+   ============================= */
+
+/* 1. Variáveis e bases */
+@import url('./utils/variables.css');
+@import url('./utils/base.css');
+
+/* 2. Componentes reutilizáveis */
+@import url('./modules/navbar.css');
+@import url('./modules/cards.css');
+@import url('./modules/forms.css');
+@import url('./modules/avatar.css');
+
+/* 3. Utilitários */
+@import url('./utils/utilities.css');
+
+/* 4. Páginas específicas */
+@import url('./pages/dashboard.css');
+@import url('./pages/cadastro.css');
+@import url('./pages/lista.css');
+@import url('./pages/edicao.css');

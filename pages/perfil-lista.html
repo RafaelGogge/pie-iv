@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UniLab - Lista e Gerenciamento de Perfis">
+    <meta name="author" content="Rafael V. Gogge">
+    <title>UniLab - Gerenciar Perfis</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body class="opacity-0 transition-opacity duration-1000">
+    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
+    <!-- Navbar -->
+    <header class="navbar navbar-expand-lg navbar-dark fixed-top transition-all duration-300" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="../perfil-dashboard.html">
+                <img src="../assets/images/LogoUnilab.png" alt="UniLab Logo" height="40" width="auto">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../sejaBemVindo.html">
+                            <i class="bi bi-house-door me-1"></i>Início
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../perfil-dashboard.html">
+                            <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="perfil-cadastro.html">
+                            <i class="bi bi-person-plus me-1"></i>Cadastrar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="perfil-lista.html">
+                            <i class="bi bi-people me-1"></i>Perfis
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../agendamento_lab.html">
+                            <i class="bi bi-calendar-plus me-1"></i>Agendar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../historicoAgendamentos.html">
+                            <i class="bi bi-clock-history me-1"></i>Histórico
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <div class="notification-bell me-3">
+                        <i class="bi bi-bell-fill fs-5 text-white"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
+                            role="button" data-bs-toggle="dropdown">
+                            <div class="avatar-circle me-2">
+                                <img src="../assets/avatares/computacao/computacao-1.png" alt="Avatar"
+                                    id="headerAvatarImg" class="avatar-img">
+                            </div>
+                            <span class="user-name">Usuário</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="../perfil-dashboard.html"><i
+                                        class="bi bi-speedometer2"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="perfil-cadastro.html"><i
+                                        class="bi bi-person-plus"></i>Cadastrar Perfil</a></li>
+                            <li><a class="dropdown-item active" href="perfil-lista.html"><i
+                                        class="bi bi-people"></i>Meus Perfis</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item logout-button" href="#"><i
+                                        class="bi bi-box-arrow-right"></i>Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main id="main-content" class="container py-4">
+        <!-- Cabeçalho -->
+        <div class="welcome-section mb-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="typing-text"><i class="bi bi-people me-2"></i>Gerenciar Perfis</h1>
+                    <p class="lead">Visualize, edite e gerencie todos os perfis cadastrados no sistema</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="perfil-cadastro.html" class="btn btn-primary">
+                        <i class="bi bi-person-plus me-2"></i>Novo Perfil
+                    </a>
+                    <button class="btn btn-outline-light" onclick="exportUserData()">
+                        <i class="bi bi-download me-2"></i>Exportar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtros e Busca -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label small">Buscar por nome ou matrícula:</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                    <input type="text" class="form-control" id="searchInput"
+                                        placeholder="Digite para buscar...">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label small">Departamento:</label>
+                                <select class="form-select" id="filterDepartamento">
+                                    <option value="">Todos</option>
+                                    <option value="computacao">Computação</option>
+                                    <option value="biologia">Biologia</option>
+                                    <option value="fisica">Física</option>
+                                    <option value="quimica">Química</option>
+                                    <option value="matematica">Matemática</option>
+                                    <option value="administracao">Administração</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label small">Status:</label>
+                                <select class="form-select" id="filterStatus">
+                                    <option value="">Todos</option>
+                                    <option value="ativo">Ativo</option>
+                                    <option value="inativo">Inativo</option>
+                                    <option value="pendente">Pendente</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label small">Tipo:</label>
+                                <select class="form-select" id="filterTipo">
+                                    <option value="">Todos</option>
+                                    <option value="estudante">Estudante</option>
+                                    <option value="professor">Professor</option>
+                                    <option value="funcionario">Funcionário</option>
+                                    <option value="pesquisador">Pesquisador</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label small">Ações:</label>
+                                <button class="btn btn-outline-secondary w-100" onclick="clearFilters()">
+                                    <i class="bi bi-x-circle me-1"></i>Limpar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resumo dos Resultados -->
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="text-muted">Exibindo <strong id="profileCount">0</strong> perfis de <strong
+                                id="totalProfiles">0</strong></span>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-sm btn-outline-secondary active" id="viewGrid"
+                            onclick="toggleView('grid')">
+                            <i class="bi bi-grid-3x3-gap"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" id="viewList" onclick="toggleView('list')">
+                            <i class="bi bi-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Perfis - Vista em Grid -->
+        <div id="profilesGrid" class="row g-3 mb-4">
+            <!-- Os cards de perfis serão inseridos aqui dinamicamente -->
+        </div>
+
+        <!-- Lista de Perfis - Vista em Tabela -->
+        <div id="profilesTable" class="d-none">
+            <div class="card">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Avatar</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Matrícula</th>
+                                    <th scope="col">Departamento</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="profilesTableBody">
+                                <!-- As linhas da tabela serão inseridas aqui dinamicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estado Vazio -->
+        <div id="emptyState" class="text-center py-5" style="display: none;">
+            <i class="bi bi-people display-1 text-muted mb-3"></i>
+            <h3 class="text-muted mb-3">Nenhum perfil encontrado</h3>
+            <p class="text-muted mb-4">Não há perfis que correspondam aos critérios de busca.</p>
+            <a href="perfil-cadastro.html" class="btn btn-primary">
+                <i class="bi bi-person-plus me-2"></i>Cadastrar Primeiro Perfil
+            </a>
+        </div>
+    </main>
+
+    <!-- Modal de Edição Rápida -->
+    <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-pencil me-2"></i>Editar Perfil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="editProfileId">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nome *</label>
+                                <input type="text" class="form-control" id="editName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Matrícula *</label>
+                                <input type="text" class="form-control" id="editMatricula" required maxlength="11">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">E-mail *</label>
+                                <input type="email" class="form-control" id="editEmail" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Telefone</label>
+                                <input type="tel" class="form-control" id="editTelefone">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Departamento *</label>
+                                <select class="form-select" id="editDepartamento" required>
+                                    <option value="">Selecione</option>
+                                    <option value="computacao">Computação</option>
+                                    <option value="biologia">Biologia</option>
+                                    <option value="fisica">Física</option>
+                                    <option value="quimica">Química</option>
+                                    <option value="matematica">Matemática</option>
+                                    <option value="administracao">Administração</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Curso *</label>
+                                <input type="text" class="form-control" id="editCurso" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Tipo de Usuário *</label>
+                                <select class="form-select" id="editTipoUsuario" required>
+                                    <option value="">Selecione</option>
+                                    <option value="estudante">Estudante</option>
+                                    <option value="professor">Professor</option>
+                                    <option value="funcionario">Funcionário</option>
+                                    <option value="pesquisador">Pesquisador</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Status *</label>
+                                <select class="form-select" id="editStatus" required>
+                                    <option value="ativo">Ativo</option>
+                                    <option value="inativo">Inativo</option>
+                                    <option value="pendente">Pendente</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Observações</label>
+                                <textarea class="form-control" id="editObservacoes" rows="2"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Avatar</label>
+                                <div class="d-flex align-items-center gap-3">
+                                    <img id="editAvatarImg" src="" alt="Avatar" class="avatar-circle-sm">
+                                    <input type="text" class="form-control" id="editAvatar" placeholder="URL do avatar">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="saveProfileEdit()">Salvar Alterações</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../js/main.js"></script>
+    <script type="module">
+        // Script específico da página de lista
+        import { ProfileManager } from '../js/modules/profileManager.js';
+        import { NotificationSystem } from '../js/modules/notificationSystem.js';
+        import { FormatUtils } from '../js/utils/helpers.js';
+
+        let profileManager, notificationSystem;
+        let currentView = 'grid';
+        let profiles = [];
+        let filteredProfiles = [];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            profileManager = new ProfileManager();
+            notificationSystem = new NotificationSystem();
+
+            loadProfiles();
+            setupEventListeners();
+        });
+
+        function loadProfiles() {
+            profiles = profileManager.getAllProfiles();
+            console.log('[Perfis] Carregados do localStorage:', profiles);
+            if (!Array.isArray(profiles)) {
+                console.error('[Perfis] Estrutura inesperada recebida:', profiles);
+                profiles = [];
+            }
+            filteredProfiles = [...profiles];
+            updateProfileDisplay();
+        }
+
+        function setupEventListeners() {
+            // Busca em tempo real
+            document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+            // Filtros
+            document.getElementById('filterDepartamento').addEventListener('change', applyFilters);
+            document.getElementById('filterStatus').addEventListener('change', applyFilters);
+            document.getElementById('filterTipo').addEventListener('change', applyFilters);
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const departFilter = document.getElementById('filterDepartamento').value;
+            const statusFilter = document.getElementById('filterStatus').value;
+            const tipoFilter = document.getElementById('filterTipo').value;
+
+            filteredProfiles = profiles.filter(profile => {
+                const matchesSearch = !searchTerm ||
+                    profile.name.toLowerCase().includes(searchTerm) ||
+                    profile.matricula.includes(searchTerm) ||
+                    profile.email.toLowerCase().includes(searchTerm);
+
+                const matchesDepart = !departFilter || profile.departamento === departFilter;
+                const matchesStatus = !statusFilter || profile.status === statusFilter;
+                const matchesTipo = !tipoFilter || profile.tipoUsuario === tipoFilter;
+
+                return matchesSearch && matchesDepart && matchesStatus && matchesTipo;
+            });
+
+            updateProfileDisplay();
+        }
+
+        function updateProfileDisplay() {
+            const profileCount = document.getElementById('profileCount');
+            const totalProfiles = document.getElementById('totalProfiles');
+
+            profileCount.textContent = filteredProfiles.length;
+            totalProfiles.textContent = profiles.length;
+
+            if (filteredProfiles.length === 0) {
+                showEmptyState();
+            } else {
+                hideEmptyState();
+                if (currentView === 'grid') {
+                    renderGridView();
+                } else {
+                    renderTableView();
+                }
+            }
+        }
+
+        function renderGridView() {
+            const container = document.getElementById('profilesGrid');
+
+            container.innerHTML = filteredProfiles.map(profile => `
+                <div class="col-lg-4 col-md-6">
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <div class="avatar-circle">
+                                <img src="${profile.avatar}" alt="Avatar" class="avatar-img">
+                            </div>
+                            <div class="profile-info">
+                                <h6 class="profile-name">${profile.name}</h6>
+                                <small class="profile-matricula">${profile.matricula}</small>
+                            </div>
+                            <span class="badge bg-${getStatusColor(profile.status)}">${profile.status}</span>
+                        </div>
+                        
+                        <div class="profile-card-body">
+                            <div class="profile-details">
+                                <div class="detail-item">
+                                    <i class="bi bi-envelope me-2"></i>
+                                    <span>${profile.email}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="bi bi-building me-2"></i>
+                                    <span>${FormatUtils.getDepartmentName(profile.departamento)}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="bi bi-person-badge me-2"></i>
+                                    <span>${FormatUtils.getUserTypeName(profile.tipoUsuario)}</span>
+                                </div>
+                                ${profile.telefone ? `
+                                <div class="detail-item">
+                                    <i class="bi bi-telephone me-2"></i>
+                                    <span>${profile.telefone}</span>
+                                </div>
+                                ` : ''}
+                            </div>
+                        </div>
+
+                        <div class="profile-card-footer">
+                            <button class="btn btn-sm btn-outline-primary" onclick="editProfile(${profile.id})">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-info" onclick="viewProfile(${profile.id})">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="deleteProfile(${profile.id})">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderTableView() {
+            const tbody = document.getElementById('profilesTableBody');
+
+            tbody.innerHTML = filteredProfiles.map(profile => `
+                <tr>
+                    <td>
+                        <div class="avatar-circle-sm">
+                            <img src="${profile.avatar}" alt="Avatar" class="avatar-img">
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <strong>${profile.name}</strong>
+                            <br>
+                            <small class="text-muted">${profile.email}</small>
+                        </div>
+                    </td>
+                    <td><code>${profile.matricula}</code></td>
+                    <td>${FormatUtils.getDepartmentName(profile.departamento)}</td>
+                    <td>${FormatUtils.getUserTypeName(profile.tipoUsuario)}</td>
+                    <td>
+                        <span class="badge bg-${getStatusColor(profile.status)}">${profile.status}</span>
+                    </td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-outline-primary" onclick="editProfile(${profile.id})">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-outline-info" onclick="viewProfile(${profile.id})">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-outline-danger" onclick="deleteProfile(${profile.id})">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function getStatusColor(status) {
+            switch (status) {
+                case 'ativo': return 'success';
+                case 'inativo': return 'secondary';
+                case 'pendente': return 'warning';
+                default: return 'secondary';
+            }
+        }
+
+        function showEmptyState() {
+            document.getElementById('emptyState').style.display = 'block';
+            document.getElementById('profilesGrid').style.display = 'none';
+            document.getElementById('profilesTable').style.display = 'none';
+        }
+
+        function hideEmptyState() {
+            document.getElementById('emptyState').style.display = 'none';
+            if (currentView === 'grid') {
+                document.getElementById('profilesGrid').style.display = 'block';
+                document.getElementById('profilesTable').style.display = 'none';
+            } else {
+                document.getElementById('profilesGrid').style.display = 'none';
+                document.getElementById('profilesTable').style.display = 'block';
+            }
+        }
+
+        window.toggleView = function (view) {
+            currentView = view;
+
+            document.getElementById('viewGrid').classList.toggle('active', view === 'grid');
+            document.getElementById('viewList').classList.toggle('active', view === 'list');
+
+            updateProfileDisplay();
+        };
+
+        window.clearFilters = function () {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('filterDepartamento').value = '';
+            document.getElementById('filterStatus').value = '';
+            document.getElementById('filterTipo').value = '';
+            applyFilters();
+        };
+
+        window.editProfile = function (profileId) {
+            const idNum = Number(profileId);
+            const profile = profiles.find(p => p.id === idNum);
+            if (profile) {
+                document.getElementById('editProfileId').value = idNum;
+                document.getElementById('editName').value = profile.name || '';
+                document.getElementById('editMatricula').value = profile.matricula || '';
+                document.getElementById('editEmail').value = profile.email || '';
+                document.getElementById('editTelefone').value = profile.telefone || '';
+                document.getElementById('editDepartamento').value = profile.departamento || '';
+                document.getElementById('editCurso').value = profile.curso || '';
+                document.getElementById('editTipoUsuario').value = profile.tipoUsuario || '';
+                document.getElementById('editStatus').value = profile.status || 'ativo';
+                document.getElementById('editObservacoes').value = profile.observacoes || '';
+                document.getElementById('editAvatar').value = profile.avatar || '';
+                document.getElementById('editAvatarImg').src = profile.avatar || '';
+                new bootstrap.Modal(document.getElementById('editModal')).show();
+            }
+        };
+
+        window.viewProfile = function (profileId) {
+            const idNum = Number(profileId);
+            window.location.href = `perfil-edicao.html?id=${idNum}`;
+        };
+
+        window.deleteProfile = function (profileId) {
+            const idNum = Number(profileId);
+            const profile = profiles.find(p => p.id === idNum);
+            if (profile && confirm(`Tem certeza que deseja excluir o perfil de ${profile.name}?`)) {
+                const result = profileManager.removeProfile(idNum);
+                if (result.success) {
+                    notificationSystem.showSuccess('Perfil excluído com sucesso!');
+                    loadProfiles();
+                } else {
+                    notificationSystem.showError(result.message);
+                }
+            }
+        };
+
+        window.saveProfileEdit = function () {
+            const profileId = Number(document.getElementById('editProfileId').value);
+            const updatedData = {
+                name: document.getElementById('editName').value.trim(),
+                matricula: document.getElementById('editMatricula').value.trim(),
+                email: document.getElementById('editEmail').value.trim(),
+                telefone: document.getElementById('editTelefone').value.trim(),
+                departamento: document.getElementById('editDepartamento').value,
+                curso: document.getElementById('editCurso').value.trim(),
+                tipoUsuario: document.getElementById('editTipoUsuario').value,
+                status: document.getElementById('editStatus').value,
+                observacoes: document.getElementById('editObservacoes').value.trim(),
+                avatar: document.getElementById('editAvatar').value.trim()
+            };
+
+            document.getElementById('editAvatarImg').src = updatedData.avatar;
+
+            const result = profileManager.updateProfile(profileId, updatedData);
+            if (result.success) {
+                notificationSystem.showSuccess('Perfil atualizado com sucesso!');
+                bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+                loadProfiles();
+            } else {
+                notificationSystem.showError(result.message);
+            }
+        };
+    </script>
+</body>
+
+</html>

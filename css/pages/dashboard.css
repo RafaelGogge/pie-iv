@@ -1,0 +1,194 @@
+/* 
+    UniLab - Dashboard do Perfil
+    Autor: Rafael V. Gogge
+    Copyright © 2025 Rafael V. Gogge
+*/
+
+
+body {
+    background: linear-gradient(120deg, #f8fafc 0%, #e9ecef 100%);
+    min-height: 100vh;
+    margin: 20px;
+}
+
+/* Seção do Dashboard */
+.profile-section {
+    margin-top: 2rem;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.dashboard-header h1 {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.dashboard-header p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+}
+
+/* Layout do dashboard */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+/* Cards específicos do dashboard */
+
+.dashboard-card {
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.07);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.dashboard-card:hover {
+    box-shadow: 0 6px 32px 0 rgba(0, 0, 0, 0.13);
+    transform: translateY(-2px) scale(1.01);
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+
+.stat-card {
+    background: linear-gradient(135deg, #0d6efd 60%, #6f42c1 100%);
+    color: #fff;
+    padding: 1.5rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 12px 0 rgba(13, 110, 253, 0.08);
+    transition: box-shadow 0.3s, transform 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.stat-card:hover {
+    transform: scale(1.04) translateY(-2px);
+    box-shadow: 0 8px 32px 0 rgba(13, 110, 253, 0.18);
+}
+
+.stat-card h4 {
+    font-size: 2.2rem;
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+}
+
+.stat-card p {
+    margin: 0;
+    opacity: 0.92;
+    font-size: 1.1rem;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 2rem;
+    margin: 0 auto 0.7rem auto;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Ações rápidas cards */
+.action-card {
+    display: block;
+    background: #f8fafc;
+    border-radius: 1rem;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    color: #212529;
+    text-decoration: none;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+    cursor: pointer;
+}
+
+.action-card:hover,
+.action-card:focus {
+    background: #e9ecef;
+    box-shadow: 0 4px 16px 0 rgba(13, 110, 253, 0.10);
+    transform: translateY(-2px) scale(1.03);
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.action-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.7rem;
+    margin: 0 auto 0.5rem auto;
+    color: #fff;
+}
+
+.bg-primary {
+    background: #0d6efd !important;
+}
+
+.bg-success {
+    background: #198754 !important;
+}
+
+.bg-warning {
+    background: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.bg-info {
+    background: #0dcaf0 !important;
+    color: #212529 !important;
+}
+
+/* Gráfico de pizza responsivo */
+#departamentoChart {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Responsividade do dashboard */
+@media (max-width: 992px) {
+    .dashboard-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        padding: 1rem;
+    }
+
+    .stat-card {
+        padding: 1rem 0.5rem;
+    }
+}

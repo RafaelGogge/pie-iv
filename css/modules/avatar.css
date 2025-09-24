@@ -1,0 +1,176 @@
+/* Avatar/logo pequeno na navbar */
+.navbar .profile-avatar,
+.navbar .avatar-img,
+.navbar img.logo-navbar {
+    width: 30px !important;
+    height: 30px !important;
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    margin: 0 6px 0 0;
+    box-shadow: none;
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 
+    UniLab - Componentes de Avatar
+    Autor: Rafael V. Gogge
+    Copyright © 2025 Rafael V. Gogge
+*/
+
+.avatar-option .avatar-img {
+    width: var(--avatar-option-size);
+    height: var(--avatar-option-size);
+    border-radius: var(--border-radius-circle);
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    transition: box-shadow 0.2s, border 0.2s;
+}
+
+.avatar-option .avatar-img:hover {
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 4px 16px rgba(13, 110, 253, 0.15);
+}
+
+/* Botões de categoria */
+.category-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-md);
+}
+
+.category-btn {
+    transition: var(--transition-normal);
+    border-radius: var(--border-radius-md);
+}
+
+.category-btn.active {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+.category-btn:not(.active):hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+/* Preview do avatar */
+.avatar-preview-container {
+    margin: var(--spacing-lg) 0 var(--spacing-md);
+    text-align: center;
+}
+
+.avatar-preview-large {
+    width: var(--avatar-preview-size);
+    height: var(--avatar-preview-size);
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: var(--transition-normal);
+}
+
+.avatar-preview-large:hover {
+    transform: scale(1.05);
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.18);
+}
+
+.avatar-preview-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Grid de seleção de avatares */
+.avatar-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 15px;
+}
+
+.avatar-option {
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: var(--border-radius-circle);
+    transition: var(--transition-normal);
+    padding: 5px;
+    display: inline-block;
+    margin: 5px;
+}
+
+.avatar-option:hover {
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.avatar-option.selected {
+    border-color: var(--success-color);
+    background-color: rgba(40, 167, 69, 0.1);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+}
+
+/* Animações */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.3);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    70% {
+        transform: translateX(-50%) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .avatar-speech-bubble {
+        min-width: 120px;
+        max-width: 180px;
+        font-size: 0.8rem;
+    }
+
+    .avatar-option .avatar-img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .avatar-preview-large {
+        width: 64px;
+        height: 64px;
+    }
+}

@@ -1,0 +1,167 @@
+/* 
+    UniLab - Página de Lista de Perfis
+    Autor: Rafael V. Gogge
+    Copyright © 2025 Rafael V. Gogge
+*/
+
+/* Container da lista */
+.lista-container {
+    padding: var(--spacing-lg);
+}
+
+.lista-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.lista-header h1 {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.lista-header p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Controles da lista */
+.lista-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    background-color: var(--card-bg);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-lg);
+}
+
+.search-box {
+    flex: 1;
+    max-width: 300px;
+    margin-right: var(--spacing-md);
+}
+
+/* Grid de perfis */
+.perfis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+/* Card de perfil na lista */
+.perfil-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
+    text-align: center;
+}
+
+.perfil-card:hover {
+    background-color: var(--card-hover-bg);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.perfil-card .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--border-radius-circle);
+    margin: 0 auto var(--spacing-md) auto;
+    border: 3px solid var(--accent-color);
+}
+
+.perfil-card h5 {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.perfil-card p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Badge de status */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.ativo {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.status-badge.inativo {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Ações do perfil */
+.perfil-actions {
+    margin-top: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+}
+
+.perfil-actions .btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+/* Estado vazio */
+.empty-state {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--accent-color);
+}
+
+.empty-state h3 {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Responsividade da lista */
+@media (max-width: 768px) {
+    .lista-container {
+        padding: var(--spacing-md);
+    }
+
+    .lista-controls {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .search-box {
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .perfis-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .perfil-actions {
+        flex-wrap: wrap;
+    }
+
+    .perfil-actions .btn {
+        flex: 1;
+        min-width: 120px;
+    }
+}

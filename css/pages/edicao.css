@@ -1,0 +1,160 @@
+/* 
+    UniLab - Página de Edição
+    Autor: Rafael V. Gogge
+    Copyright © 2025 Rafael V. Gogge
+*/
+
+/* Container de edição */
+.edicao-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+.edicao-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.edicao-header h1 {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.edicao-header p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Layout de edição */
+.edicao-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-lg);
+}
+
+/* Seção de avatar na edição */
+.avatar-edit-section {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    height: fit-content;
+}
+
+.avatar-edit-section h3 {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.current-avatar-display {
+    margin-bottom: var(--spacing-lg);
+}
+
+.current-avatar-display .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: var(--border-radius-circle);
+    border: 4px solid var(--accent-color);
+    margin: 0 auto;
+}
+
+/* Formulário de edição */
+.edicao-form {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.edicao-form h3 {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+/* Indicador de mudanças */
+.changes-indicator {
+    background-color: var(--warning-color);
+    color: #000;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-lg);
+    display: none;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.changes-indicator.show {
+    display: flex;
+}
+
+.changes-indicator i {
+    font-size: 1.1rem;
+}
+
+/* Histórico de alterações */
+.edit-history {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.edit-history h4 {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.history-item {
+    border-left: 3px solid var(--accent-color);
+    padding-left: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.history-item .timestamp {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+.history-item .change-description {
+    color: var(--text-color);
+    margin-top: var(--spacing-xs);
+}
+
+/* Ações de edição */
+.edicao-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsividade da edição */
+@media (max-width: 768px) {
+    .edicao-container {
+        padding: var(--spacing-md);
+    }
+
+    .edicao-layout {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .edicao-form {
+        padding: var(--spacing-lg);
+    }
+
+    .edicao-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .edicao-actions .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}

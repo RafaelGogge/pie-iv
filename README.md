@@ -65,14 +65,4 @@ Esta tela faz parte do sistema UniLab, voltado para o gerenciamento de laborató
 - Exportação de dados para portabilidade e backup
 - Foco em acessibilidade, responsividade e feedback visual
 
-## Como Apresentar para o Professor
-- Demonstre a seleção e pré-visualização de avatares por departamento
-- Mostre a exportação dos dados do usuário em JSON
-- Apresente as animações e feedbacks visuais ao editar e salvar o perfil
-- Explique a persistência das escolhas do usuário (avatar, modo escuro)
-- Destaque a responsividade e adaptação da tela para diferentes dispositivos
-
----
-
-Este projeto é a continuação do desenvolvimento do Unilab, parte do projeto: criação da tela de perfil do usuário (modelo de teste, ainda em desenvolvimento).
 

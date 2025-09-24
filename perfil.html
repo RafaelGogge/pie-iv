@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="UniLab - Perfil do Usuário">
-    <meta name="author" content="Rafael V. Gogge">
+    <title>Redirecionando...</title>
+    <meta http-equiv="refresh" content="2;url=perfil-dashboard.html">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>UniLab - Perfil do Usuário</title>
 
     <!-- Bootstrap CSS -->
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
 
     <!-- Estilos customizados -->
-    <link rel="stylesheet" href="perfil.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body class="opacity-0 transition-opacity duration-1000">
@@ -35,7 +35,7 @@
     <header class="navbar navbar-expand-lg navbar-dark fixed-top transition-all duration-300" id="navbar">
         <div class="container">
             <a class="navbar-brand" href="sejaBemVindo.html">
-                <img src="LogoUnilab.png" alt="UniLab Logo" height="40" width="auto"
+                <img src="assets/images/LogoUnilab.png" alt="UniLab Logo" height="40" width="auto"
                     class="hover:scale-105 transition-transform duration-300">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -71,8 +71,8 @@
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="avatar-circle me-2">
-                                <img src="avatares/default.png" alt="Avatar do usuário" id="headerAvatarImg"
-                                    class="avatar-img">
+                                <img src="assets/avatares/computacao/computacao-1.png" alt="Avatar do usuário"
+                                    id="headerAvatarImg" class="avatar-img">
                             </div>
                             <span class="user-name">Usuário</span>
                         </a>
@@ -115,287 +115,323 @@
             </div>
         </div>
 
-        <section class="profile-section">
-            <div class="row">
-                <!-- Coluna da Foto do Perfil -->
-                <div class="col-lg-4 mb-4">
-                    <div class="profile-photo-card">
-                        <div class="avatar-speech-bubble"></div>
-                        <div class="current-avatar">
-                            <img src="avatares/default.png" alt="Foto do Perfil" id="currentAvatarImg"
-                                class="profile-avatar">
-                        </div>
-                        <h3 class="mt-4 mb-3">Foto do Perfil</h3>
-                        <p class="text-muted mb-4">Escolha um avatar que represente seu departamento</p>
-                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#avatarModal">
-                            <i class="bi bi-camera-fill me-2"></i>Alterar Avatar
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Coluna das Informações do Perfil -->
-                <div class="col-lg-8">
-                    <div class="profile-info-card">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h2><i class="bi bi-person-vcard me-2"></i>Informações do Perfil</h2>
-                            <span class="badge bg-success">Perfil Ativo</span>
-                        </div>
-                        <form id="profileForm">
-                            <div class="row g-4">
-                                <!-- Nome Completo -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="userName" class="form-label">
-                                            <i class="bi bi-person me-2"></i>Nome Completo
-                                        </label>
-                                        <input type="text" class="form-control" id="userName" name="userName" required>
-                                    </div>
+        <!-- Abas de navegação -->
+        <ul class="nav nav-tabs mb-4" id="perfilTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="meu-perfil-tab" data-bs-toggle="tab" data-bs-target="#meu-perfil"
+                    type="button" role="tab" aria-controls="meu-perfil" aria-selected="true">Meu Perfil</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="perfis-cadastrados-tab" data-bs-toggle="tab"
+                    data-bs-target="#perfis-cadastrados" type="button" role="tab" aria-controls="perfis-cadastrados"
+                    aria-selected="false">Perfis Cadastrados</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="perfilTabsContent">
+            <div class="tab-pane fade show active" id="meu-perfil" role="tabpanel" aria-labelledby="meu-perfil-tab">
+                <section class="profile-section">
+                    <div class="row">
+                        <!-- Coluna da Foto do Perfil -->
+                        <div class="col-lg-4 mb-4">
+                            <div class="profile-photo-card">
+                                <div class="avatar-speech-bubble"></div>
+                                <div class="current-avatar">
+                                    <img src="assets/avatares/computacao/computacao-1.png" alt="Foto do Perfil"
+                                        id="currentAvatarImg" class="profile-avatar">
                                 </div>
-
-                                <!-- Email -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="userEmail" class="form-label">
-                                            <i class="bi bi-envelope me-2"></i>Email Institucional
-                                        </label>
-                                        <input type="email" class="form-control" id="userEmail" name="userEmail"
-                                            required>
-                                    </div>
-                                </div>
-
-                                <!-- Matrícula -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="userMatricula" class="form-label">
-                                            <i class="bi bi-card-heading me-2"></i>Matrícula
-                                        </label>
-                                        <input type="text" class="form-control" id="userMatricula" name="userMatricula"
-                                            required>
-                                    </div>
-                                </div>
-
-                                <!-- Departamento -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="userDepartamento" class="form-label">
-                                            <i class="bi bi-building me-2"></i>Departamento
-                                        </label>
-                                        <select class="form-select" id="userDepartamento" name="userDepartamento"
-                                            required>
-                                            <option value="" style="color: #111;">Selecione...</option>
-                                            <option value="computacao" style="color: #111;">Computação</option>
-                                            <option value="biologia" style="color: #111;">Biologia</option>
-                                            <option value="fisica" style="color: #111;">Física</option>
-                                            <option value="quimica" style="color: #111;">Química</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!-- Status -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="userStatus" class="form-label">
-                                            <i class="bi bi-toggle-on me-2"></i>Status
-                                        </label>
-                                        <select class="form-select" id="userStatus" name="userStatus" required>
-                                            <option value="ativo" style="color: #111;">Ativo</option>
-                                            <option value="inativo" style="color: #111;">Inativo</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!-- Última Atualização -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label text-muted">
-                                            <i class="bi bi-clock-history me-2"></i><span style="color: #fff;">Última
-                                                Atualização</span>
-                                        </label>
-                                        <p class="form-control-static">01 de setembro de 2025</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Botões de Ação -->
-                            <div class="mt-5 d-flex justify-content-between align-items-center">
-                                <button type="button" class="btn btn-outline-danger" onclick="resetForm()">
-                                    <i class="bi bi-arrow-counterclockwise me-2"></i>Resetar
-                                </button>
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="bi bi-check-circle me-2"></i>Salvar Alterações
+                                <h3 class="mt-4 mb-3">Foto do Perfil</h3>
+                                <p class="text-muted mb-4">Escolha um avatar que represente seu departamento</p>
+                                <button class="btn btn-primary w-100" data-bs-toggle="modal"
+                                    data-bs-target="#avatarModal">
+                                    <i class="bi bi-camera-fill me-2"></i>Alterar Avatar
                                 </button>
                             </div>
-                        </form>
-                    </div>
-
-                    <!-- Estatísticas do Usuário -->
-                    <div class="row mt-4 g-4">
-                        <div class="col-md-4">
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <i class="bi bi-calendar-check"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <h4>12</h4>
-                                    <p>Agendamentos</p>
-                                </div>
-                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <i class="bi bi-clock"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <h4>36h</h4>
-                                    <p>Horas Reservadas</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="stat-card">
-                                <div class="stat-icon">
-                                    <i class="bi bi-building"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <h4>5</h4>
-                                    <p>Labs Utilizados</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Histórico de Atividades Recentes -->
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <div class="stats-overview">
-                                <h3><i class="bi bi-activity"></i>Histórico de Atividades Recentes</h3>
-
-                                <div class="timeline">
-                                    <div class="timeline-item">
-                                        <div class="time">Hoje, 14:30</div>
-                                        <div class="content">
-                                            <div class="title">Alteração de Avatar</div>
-                                            <div class="description">Você alterou seu avatar para "Computação 3"</div>
+                        <!-- Coluna das Informações do Perfil -->
+                        <div class="col-lg-8">
+                            <div class="profile-info-card">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h2><i class="bi bi-person-vcard me-2"></i>Informações do Perfil</h2>
+                                    <span class="badge bg-success">Perfil Ativo</span>
+                                </div>
+                                <form id="profileForm">
+                                    <div class="row g-4">
+                                        <!-- ...restante do formulário e conteúdo... -->
+                                        <!-- Nome Completo -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="userName" class="form-label">
+                                                    <i class="bi bi-person me-2"></i>Nome Completo
+                                                </label>
+                                                <input type="text" class="form-control" id="userName" name="userName"
+                                                    required>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="timeline-item">
-                                        <div class="time">Ontem, 10:15</div>
-                                        <div class="content">
-                                            <div class="title">Agendamento Confirmado</div>
-                                            <div class="description">Seu agendamento para o Laboratório de Redes foi
-                                                confirmado</div>
+                                        <!-- Email -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="userEmail" class="form-label">
+                                                    <i class="bi bi-envelope me-2"></i>Email Institucional
+                                                </label>
+                                                <input type="email" class="form-control" id="userEmail" name="userEmail"
+                                                    required>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="timeline-item">
-                                        <div class="time">01/09/2025, 08:45</div>
-                                        <div class="content">
-                                            <div class="title">Atualização de Perfil</div>
-                                            <div class="description">Você atualizou suas informações de contato</div>
+                                        <!-- Matrícula -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="userMatricula" class="form-label">
+                                                    <i class="bi bi-card-heading me-2"></i>Matrícula
+                                                </label>
+                                                <input type="text" class="form-control" id="userMatricula"
+                                                    name="userMatricula" required>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Dicas & Informações -->
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <div class="stats-overview">
-                                <h3><i class="bi bi-lightbulb"></i>Dicas & Informações</h3>
+                                        <!-- Departamento -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="userDepartamento" class="form-label">
+                                                    <i class="bi bi-building me-2"></i>Departamento
+                                                </label>
+                                                <select class="form-select" id="userDepartamento"
+                                                    name="userDepartamento" required>
+                                                    <option value="" style="color: #111;">Selecione...</option>
+                                                    <option value="computacao" style="color: #111;">Computação</option>
+                                                    <option value="biologia" style="color: #111;">Biologia</option>
+                                                    <option value="fisica" style="color: #111;">Física</option>
+                                                    <option value="quimica" style="color: #111;">Química</option>
+                                                </select>
+                                            </div>
+                                        </div>
 
-                                <div class="row g-3 mt-2">
-                                    <div class="col-md-6">
-                                        <div class="content p-3 h-100"
-                                            style="background: rgba(255,255,255,0.05); border-radius: 10px;">
-                                            <h5><i class="bi bi-calendar-check me-2 text-success"></i>Agendamentos</h5>
-                                            <p class="small mb-2">Você pode agendar laboratórios com até 2 semanas de
-                                                antecedência.</p>
-                                            <div class="d-flex flex-wrap">
-                                                <span class="stat-pill"><i class="bi bi-clock"></i>12
-                                                    agendamentos</span>
-                                                <span class="stat-pill"><i class="bi bi-calendar-week"></i>4 este
-                                                    mês</span>
+                                        <!-- Status -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="userStatus" class="form-label">
+                                                    <i class="bi bi-toggle-on me-2"></i>Status
+                                                </label>
+                                                <select class="form-select" id="userStatus" name="userStatus" required>
+                                                    <option value="ativo" style="color: #111;">Ativo</option>
+                                                    <option value="inativo" style="color: #111;">Inativo</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="content p-3 h-100"
-                                            style="background: rgba(255,255,255,0.05); border-radius: 10px;">
-                                            <h5><i class="bi bi-gear me-2 text-primary"></i>Personalização</h5>
-                                            <p class="small mb-2">Personalize sua experiência escolhendo avatares
-                                                temáticos.</p>
-                                            <div class="d-flex flex-wrap">
-                                                <span class="stat-pill"><i class="bi bi-palette"></i>6 temas
-                                                    disponíveis</span>
-                                                <span class="stat-pill"><i class="bi bi-person-badge"></i>20+
-                                                    avatares</span>
-                                            </div>
+                                    <!-- Botões de Ação -->
+                                    <div class="mt-5 d-flex justify-content-between align-items-center">
+                                        <button type="button" class="btn btn-outline-danger" onclick="resetForm()">
+                                            <i class="bi bi-arrow-counterclockwise me-2"></i>Resetar
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="bi bi-check-circle me-2"></i>Salvar Alterações
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Estatísticas do Usuário -->
+                            <div class="row mt-4 g-4">
+                                <div class="col-md-4">
+                                    <div class="stat-card">
+                                        <div class="stat-icon">
+                                            <i class="bi bi-calendar-check"></i>
+                                        </div>
+                                        <div class="stat-content">
+                                            <h4>12</h4>
+                                            <p>Agendamentos</p>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-6">
-                                        <div class="content p-3 h-100"
-                                            style="background: rgba(255,255,255,0.05); border-radius: 10px;">
-                                            <h5><i class="bi bi-shield-check me-2 text-warning"></i>Segurança</h5>
-                                            <p class="small mb-2">Mantenha seus dados atualizados para maior segurança.
-                                            </p>
-                                            <div class="d-flex flex-wrap">
-                                                <span class="stat-pill"><i class="bi bi-clock-history"></i>Última
-                                                    atualização: 01/09</span>
-                                                <span class="stat-pill"><i class="bi bi-shield"></i>Dados
-                                                    protegidos</span>
-                                            </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="stat-card">
+                                        <div class="stat-icon">
+                                            <i class="bi bi-clock"></i>
+                                        </div>
+                                        <div class="stat-content">
+                                            <h4>36h</h4>
+                                            <p>Horas Reservadas</p>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="stat-card">
+                                        <div class="stat-icon">
+                                            <i class="bi bi-building"></i>
+                                        </div>
+                                        <div class="stat-content">
+                                            <h4>5</h4>
+                                            <p>Labs Utilizados</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <div class="col-md-6">
-                                        <div class="content p-3 h-100"
-                                            style="background: rgba(255,255,255,0.05); border-radius: 10px;">
-                                            <h5><i class="bi bi-question-circle me-2 text-danger"></i>Precisa de ajuda?
-                                            </h5>
-                                            <p class="small mb-2">Entre em contato com o suporte técnico para dúvidas.
-                                            </p>
-                                            <div class="d-flex flex-wrap">
-                                                <span class="stat-pill"><i
-                                                        class="bi bi-envelope"></i>suporte@unilab.com</span>
-                                                <span class="stat-pill"><i class="bi bi-telephone"></i>(00)
-                                                    1234-5678</span>
+                            <!-- Histórico de Atividades Recentes -->
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <div class="stats-overview">
+                                        <h3><i class="bi bi-activity"></i>Histórico de Atividades Recentes</h3>
+
+                                        <div class="timeline">
+                                            <div class="timeline-item">
+                                                <div class="time">Hoje, 14:30</div>
+                                                <div class="content">
+                                                    <div class="title">Alteração de Avatar</div>
+                                                    <div class="description">Você alterou seu avatar para "Computação 3"
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="timeline-item">
+                                                <div class="time">Ontem, 10:15</div>
+                                                <div class="content">
+                                                    <div class="title">Agendamento Confirmado</div>
+                                                    <div class="description">Seu agendamento para o Laboratório de Redes
+                                                        foi
+                                                        confirmado</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="timeline-item">
+                                                <div class="time">01/09/2025, 08:45</div>
+                                                <div class="content">
+                                                    <div class="title">Atualização de Perfil</div>
+                                                    <div class="description">Você atualizou suas informações de contato
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Dicas & Informações -->
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <div class="stats-overview">
+                                        <h3><i class="bi bi-lightbulb"></i>Dicas & Informações</h3>
+
+                                        <div class="row g-3 mt-2">
+                                            <div class="col-md-6">
+                                                <div class="content p-3 h-100"
+                                                    style="background: rgba(255,255,255,0.05); border-radius: 10px;">
+                                                    <h5><i
+                                                            class="bi bi-calendar-check me-2 text-success"></i>Agendamentos
+                                                    </h5>
+                                                    <p class="small mb-2">Você pode agendar laboratórios com até 2
+                                                        semanas de
+                                                        antecedência.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <span class="stat-pill"><i class="bi bi-clock"></i>12
+                                                            agendamentos</span>
+                                                        <span class="stat-pill"><i class="bi bi-calendar-week"></i>4
+                                                            este
+                                                            mês</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="content p-3 h-100"
+                                                    style="background: rgba(255,255,255,0.05); border-radius: 10px;">
+                                                    <h5><i class="bi bi-gear me-2 text-primary"></i>Personalização</h5>
+                                                    <p class="small mb-2">Personalize sua experiência escolhendo
+                                                        avatares
+                                                        temáticos.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <span class="stat-pill"><i class="bi bi-palette"></i>6 temas
+                                                            disponíveis</span>
+                                                        <span class="stat-pill"><i class="bi bi-person-badge"></i>20+
+                                                            avatares</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="content p-3 h-100"
+                                                    style="background: rgba(255,255,255,0.05); border-radius: 10px;">
+                                                    <h5><i class="bi bi-shield-check me-2 text-warning"></i>Segurança
+                                                    </h5>
+                                                    <p class="small mb-2">Mantenha seus dados atualizados para maior
+                                                        segurança.
+                                                    </p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <span class="stat-pill"><i
+                                                                class="bi bi-clock-history"></i>Última
+                                                            atualização: 01/09</span>
+                                                        <span class="stat-pill"><i class="bi bi-shield"></i>Dados
+                                                            protegidos</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="content p-3 h-100"
+                                                    style="background: rgba(255,255,255,0.05); border-radius: 10px;">
+                                                    <h5><i class="bi bi-question-circle me-2 text-danger"></i>Precisa de
+                                                        ajuda?
+                                                    </h5>
+                                                    <p class="small mb-2">Entre em contato com o suporte técnico para
+                                                        dúvidas.
+                                                    </p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <span class="stat-pill"><i
+                                                                class="bi bi-envelope"></i>suporte@unilab.com</span>
+                                                        <span class="stat-pill"><i class="bi bi-telephone"></i>(00)
+                                                            1234-5678</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botões de Ações Rápidas -->
+                            <div class="row mt-4 mb-5">
+                                <div class="col-12">
+                                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                                        <button class="btn btn-primary"
+                                            onclick="window.location.href='agendamento_lab.html'">
+                                            <i class="bi bi-calendar-plus me-2"></i>Novo Agendamento
+                                        </button>
+                                        <button class="btn btn-outline-light" onclick="exportUserData()">
+                                            <i class="bi bi-download me-2"></i>Exportar Dados
+                                        </button>
+                                        <button class="btn btn-outline-light" data-bs-toggle="modal"
+                                            data-bs-target="#preferencesModal">
+                                            <i class="bi bi-sliders me-2"></i>Preferências
+                                        </button>
+                                        <button class="btn btn-outline-warning">
+                                            <i class="bi bi-question-circle me-2"></i>Ajuda
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </section>
+            </div>
 
-                    <!-- Botões de Ações Rápidas -->
-                    <div class="row mt-4 mb-5">
-                        <div class="col-12">
-                            <div class="d-flex flex-wrap justify-content-center gap-3">
-                                <button class="btn btn-primary" onclick="window.location.href='agendamento_lab.html'">
-                                    <i class="bi bi-calendar-plus me-2"></i>Novo Agendamento
-                                </button>
-                                <button class="btn btn-outline-light" onclick="exportUserData()">
-                                    <i class="bi bi-download me-2"></i>Exportar Dados
-                                </button>
-                                <button class="btn btn-outline-light" data-bs-toggle="modal"
-                                    data-bs-target="#preferencesModal">
-                                    <i class="bi bi-sliders me-2"></i>Preferências
-                                </button>
-                                <button class="btn btn-outline-warning">
-                                    <i class="bi bi-question-circle me-2"></i>Ajuda
-                                </button>
-                            </div>
+            <!-- Aba Perfis Cadastrados -->
+            <div class="tab-pane fade" id="perfis-cadastrados" role="tabpanel" aria-labelledby="perfis-cadastrados-tab">
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h4 class="mb-0"><i class="bi bi-people me-2"></i>Perfis Cadastrados</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="listaPerfisCadastrados">
+                            <!-- Lista de perfis será renderizada aqui pelo JS -->
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <!-- Modal de Seleção de Avatar -->
@@ -451,7 +487,7 @@
                                 <!-- Avatar Preview Card -->
                                 <div class="preview-card mb-4">
                                     <div class="current-selection">
-                                        <img src="avatares/computacao/computacao-1.png" alt="Avatar Selecionado"
+                                        <img src="assets/avatares/computacao/computacao-1.png" alt="Avatar Selecionado"
                                             id="previewAvatar">
                                     </div>
                                     <div class="preview-info mt-3">
@@ -464,27 +500,27 @@
                                 <!-- Grid de Avatares -->
                                 <div class="avatar-selection-grid">
                                     <div class="avatar-item" data-avatar="computacao-1">
-                                        <img src="avatares/computacao/computacao-1.png"
+                                        <img src="assets/avatares/computacao/computacao-1.png"
                                             alt="Avatar Computação 1 - Robô Azul">
                                     </div>
                                     <div class="avatar-item" data-avatar="computacao-2">
-                                        <img src="avatares/computacao/computacao-2.png"
+                                        <img src="assets/avatares/computacao/computacao-2.png"
                                             alt="Avatar Computação 2 - Computador Moderno">
                                     </div>
                                     <div class="avatar-item" data-avatar="computacao-3">
-                                        <img src="avatares/computacao/computacao-3.png"
+                                        <img src="assets/avatares/computacao/computacao-3.png"
                                             alt="Avatar Computação 3 - Engrenagem Digital">
                                     </div>
                                     <div class="avatar-item" data-avatar="computacao-4">
-                                        <img src="avatares/computacao/computacao-4.png"
+                                        <img src="assets/avatares/computacao/computacao-4.png"
                                             alt="Avatar Computação 4 - Chip de Circuito">
                                     </div>
                                     <div class="avatar-item" data-avatar="computacao-5">
-                                        <img src="avatares/computacao/computacao-5.png"
+                                        <img src="assets/avatares/computacao/computacao-5.png"
                                             alt="Avatar Computação 5 - Código Binário">
                                     </div>
                                     <div class="avatar-item" data-avatar="computacao-6">
-                                        <img src="avatares/computacao/computacao-6.png"
+                                        <img src="assets/avatares/computacao/computacao-6.png"
                                             alt="Avatar Computação 6 - Inteligência Artificial">
                                     </div>
                                 </div>
@@ -497,7 +533,7 @@
                                 <!-- Avatar Preview Card -->
                                 <div class="preview-card mb-4">
                                     <div class="current-selection">
-                                        <img src="avatares/biologia/biologia-1.png" alt="Avatar Selecionado"
+                                        <img src="assets/avatares/biologia/biologia-1.png" alt="Avatar Selecionado"
                                             id="previewAvatarBio">
                                     </div>
                                     <div class="preview-info mt-3">
@@ -510,23 +546,28 @@
                                 <!-- Grid de Avatares -->
                                 <div class="avatar-selection-grid">
                                     <div class="avatar-item" data-avatar="biologia-1">
-                                        <img src="avatares/biologia/biologia-1.png" alt="Avatar Biologia 1 - Folha">
+                                        <img src="assets/avatares/biologia/biologia-1.png"
+                                            alt="Avatar Biologia 1 - Folha">
                                     </div>
                                     <div class="avatar-item" data-avatar="biologia-2">
-                                        <img src="avatares/biologia/biologia-2.png"
+                                        <img src="assets/avatares/biologia/biologia-2.png"
                                             alt="Avatar Biologia 2 - Microscópio">
                                     </div>
                                     <div class="avatar-item" data-avatar="biologia-3">
-                                        <img src="avatares/biologia/biologia-3.png" alt="Avatar Biologia 3 - DNA">
+                                        <img src="assets/avatares/biologia/biologia-3.png"
+                                            alt="Avatar Biologia 3 - DNA">
                                     </div>
                                     <div class="avatar-item" data-avatar="biologia-4">
-                                        <img src="avatares/biologia/biologia-4.png" alt="Avatar Biologia 4 - Célula">
+                                        <img src="assets/avatares/biologia/biologia-4.png"
+                                            alt="Avatar Biologia 4 - Célula">
                                     </div>
                                     <div class="avatar-item" data-avatar="biologia-5">
-                                        <img src="avatares/biologia/biologia-5.png" alt="Avatar Biologia 5 - Bactéria">
+                                        <img src="assets/avatares/biologia/biologia-5.png"
+                                            alt="Avatar Biologia 5 - Bactéria">
                                     </div>
                                     <div class="avatar-item" data-avatar="biologia-6">
-                                        <img src="avatares/biologia/biologia-6.png" alt="Avatar Biologia 6 - Planta">
+                                        <img src="assets/avatares/biologia/biologia-6.png"
+                                            alt="Avatar Biologia 6 - Planta">
                                     </div>
                                 </div>
                             </div>
@@ -538,7 +579,7 @@
                                 <!-- Avatar Preview Card -->
                                 <div class="preview-card mb-4">
                                     <div class="current-selection">
-                                        <img src="avatares/fisica/fisica-1.png" alt="Avatar Selecionado"
+                                        <img src="assets/avatares/fisica/fisica-1.png" alt="Avatar Selecionado"
                                             id="previewAvatarFis">
                                     </div>
                                     <div class="preview-info mt-3">
@@ -551,17 +592,19 @@
                                 <!-- Grid de Avatares -->
                                 <div class="avatar-selection-grid">
                                     <div class="avatar-item" data-avatar="fisica-1">
-                                        <img src="avatares/fisica/fisica-1.png" alt="Avatar Física 1 - Átomo">
+                                        <img src="assets/avatares/fisica/fisica-1.png" alt="Avatar Física 1 - Átomo">
                                     </div>
                                     <div class="avatar-item" data-avatar="fisica-2">
-                                        <img src="avatares/fisica/fisica-2.png"
+                                        <img src="assets/avatares/fisica/fisica-2.png"
                                             alt="Avatar Física 2 - Ímã e Campo Magnético">
                                     </div>
                                     <div class="avatar-item" data-avatar="fisica-3">
-                                        <img src="avatares/fisica/fisica-3.png" alt="Avatar Física 3 - Onda Senoidal">
+                                        <img src="assets/avatares/fisica/fisica-3.png"
+                                            alt="Avatar Física 3 - Onda Senoidal">
                                     </div>
                                     <div class="avatar-item" data-avatar="fisica-4">
-                                        <img src="avatares/fisica/fisica-4.png" alt="Avatar Física 4 - Relâmpago">
+                                        <img src="assets/avatares/fisica/fisica-4.png"
+                                            alt="Avatar Física 4 - Relâmpago">
                                     </div>
                                     <!-- Mais avatares aqui -->
                                 </div>
@@ -574,7 +617,7 @@
                                 <!-- Avatar Preview Card -->
                                 <div class="preview-card mb-4">
                                     <div class="current-selection">
-                                        <img src="avatares/quimica/quimica-1.png" alt="Avatar Selecionado"
+                                        <img src="assets/avatares/quimica/quimica-1.png" alt="Avatar Selecionado"
                                             id="previewAvatarQuim">
                                     </div>
                                     <div class="preview-info mt-3">
@@ -587,19 +630,19 @@
                                 <!-- Grid de Avatares -->
                                 <div class="avatar-selection-grid">
                                     <div class="avatar-item" data-avatar="quimica-1">
-                                        <img src="avatares/quimica/quimica-1.png"
+                                        <img src="assets/avatares/quimica/quimica-1.png"
                                             alt="Avatar Química 1 - Tubo de Ensaio">
                                     </div>
                                     <div class="avatar-item" data-avatar="quimica-2">
-                                        <img src="avatares/quimica/quimica-2.png"
+                                        <img src="assets/avatares/quimica/quimica-2.png"
                                             alt="Avatar Química 2 - Molécula de Água">
                                     </div>
                                     <div class="avatar-item" data-avatar="quimica-3">
-                                        <img src="avatares/quimica/quimica-3.png"
+                                        <img src="assets/avatares/quimica/quimica-3.png"
                                             alt="Avatar Química 3 - Frasco de Reagente">
                                     </div>
                                     <div class="avatar-item" data-avatar="quimica-4">
-                                        <img src="avatares/quimica/quimica-4.png"
+                                        <img src="assets/avatares/quimica/quimica-4.png"
                                             alt="Avatar Química 4 - Átomo e Elétrons">
                                     </div>
                                     <!-- Mais avatares aqui -->
@@ -623,7 +666,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="perfil.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>
